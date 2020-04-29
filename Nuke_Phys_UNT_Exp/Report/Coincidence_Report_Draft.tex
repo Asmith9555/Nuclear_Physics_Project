@@ -8,16 +8,37 @@
 \usepackage{tabularx,siunitx}
 \usepackage[skip=0.5\baselineskip]{caption}
 \usepackage{newtxtext,newtxmath}
-\newcommand\mX[1]{\multicolumn{1}{X}{#1}}  % handy shortcut macros
+\usepackage[autostyle]{csquotes}
+\usepackage[most]{tcolorbox}
+\usepackage{lipsum}
+\usepackage[backend=biber,
+    bibencoding=utf8,
+    style=authoryear-icomp,
+    sortlocale=de_DE,
+    natbib=true,
+    url=false,
+    doi=true,
+    eprint=false]{biblatex}
+\usepackage[]{hyperref}
+\hypersetup{
+    colorlinks=true,
+}
+\addbibresource{references.bib}
+\setlength{\headheight}{14.5pt}
+%Handy Shortcut Macros
+\newcommand\mX[1]{\multicolumn{1}{X}{#1}}
 \newcommand\mcc[1]{\multicolumn{2}{c}{#1}}
 \newcommand\mcl[1]{\multicolumn{2}{l}{#1}}
-\setlength{\headheight}{14.5pt}
+%Title Set Up
 \title{Geometric Modeling of Gamma Coincidence}
 \author{Austin Smith, Jordan Sturdivant, and Rahul Mehta\\
 Department of Physics \& Astronomy, University of Central Arkansas
 }
 \date{}
+% Document Beginning
 \begin{document}
+\frenchspacing
+%Title Inserion
 \maketitle{}
 % Introduction
 \section{Introduction}
@@ -31,61 +52,41 @@ momentum of the positronium on paper is zero, therefore the direction of each
 photon should be 180 degrees from the other to conserve momentum. The goal of
 this experiment is too prove the angular correlation between these two
 coincident gammas.
-% Methods
+%Methods
 \section{Method}
 The angle of correlation between the coincident gammas, in theory is 180
 degrees. This experiment tested this theory through comparing two different
 models: the amount of coincidence counted at a given off-set (measured from
 180 degrees) angle and a theoretical geometric model of coincident gammas with
-180 degree correlation. \setlength{\parskip}{6pt} The general design of the
-experiment involved two gamma-ray detectors in a time-gate circuitry wired to
-only measure gammas that hit both detectors within a short period of time
-between the other (Figure \ref{figure:circuit}). These detectors were set
-equidistant (varied from 15 cm to 30 cm) from a source of \textsuperscript{22}NA
-where one detector was held still, while the other was rotated freely around the
-source (Figure \ref{figure:set_up}).
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\linewidth]{Figures/gamma_coin_circuitry.png}
-    \caption{Circuitry behind the detectors used to measure gamma coincidence.}
-    \label{figure:circuit}
-    \includegraphics[width=0.45\linewidth]{Figures/detector_set_up.jpg}
-    \caption{Set up of angular variation between the two detectors and the
-    \textsuperscript{22}Na source.}
-    \label{figure:set_up}
-\end{figure}
+180 degree correlation. The general design of the experiment involved two
+gamma-ray detectors in a time-gate circuitry wired to only measure gammas that
+hit both detectors within a short period of time between the other (Figure
+\ref{figure:circuitry}). These detectors were set equidistant (varied from 15 cm
+to 30 cm) from a source of NA-22 where one detector was held still, while the
+other was rotated freely around the source (Figure \ref{figure:set_up}).
 For the first model the angle of the detector was varied in increments of 1-2
 degrees offset from 180 and a spectrum of coincident gamma rays was collected
 for 120-240 second at each angle. This spectrum was integrated for each angle
-to get the desired net count rate (Figure \ref{figure:spectrum}.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\linewidth]{Figures/sample_spectrum.png}
-    \caption{Spectrum produced with the detectors 15 cm and 0 degrees offset
-    from the source. Peak highlighted was integrated for count rate.}
-    \label{figure:spectrum}
-\end{figure}
+to get the desired net count rate (Figure \ref{figure:spectrum}).
 The second model aims to compares the overlapping area between detectors with
 the net count rate per angle. If coincident gammas eject directly opposite from
 each other, in order for any coincidence to be measured, part of the face of
-each
-detector must overlap the other. This is essentially a measure of the set-ups
-ability to count coincidence and the general trend can be compared with the
-first set of data to see if the theory is supported.
-% Results
+each detector must overlap the other. This is essentially a measure of the
+set-ups ability to count coincidence and the general trend can be compared with
+the first set of data to see if the theory is supported.
+%Results
 \section{Results}
-Table 1 \& 2 measured count rates at their respective offset angle from 180
-degrees. The trend turned out to be similar for both distances from the source
-showing a maximum count rate somewhere between -1 to 1 degrees, and following a
-Gaussian curve as the offset angle increased from the 180 degree angle.
-(Figure \ref{figure:model1_graph}). \setlength{\parskip}{6pt} For the second
-model the overlapping area of the detectors was solved as a function of offset
-angle using the geometry displayed in Figure \ref{figure:geometry}. These
-geometric correlations allow the area of overlap to be expressed only in terms
-of angle and the fixed detector radius'. To start this derivation, we found the
-total area overlapped to be a linear combination of the area of the two inner
-circles $A_{1}$ \& $A_{2}$ as labeled in Figure \ref{figure:geometry}. The areas
-of these pieces follow as:
+Table \ref{table:model1_table} diplays the measured count rates at their
+respective offset angles from 180 degrees. The trend turned out to be similar
+for both distances from the source showing a maximum count rate somewhere
+between -1 to 1 degrees, and following a Gaussian curve as the offset angle
+increased from the 180 degree angle. (Figure \ref{figure:model1_graph}).
+For the second model, the overlapping area of the detectors as a function of
+off-set angle, the geometry in Figure \ref{figure:geometry} was used. To start
+this derivation, the the total area overlapped was set as a linear combination
+of the area of the two inner circles $A_{1}$ \& $A_{2}$ (Figure
+\ref{figure:geometry}). The areas of these pieces follow as:
+%Equation Blocks
 \begin{equation}
   \begin{gathered}
    A_{1} = 2\int_{d1}^{r1}\sqrt{r_{1}^{2}-x^{2}}dx \nonumber\\
@@ -110,11 +111,29 @@ where...
 This formula only holds true for when $r_{1}\geq r_{2}$ and $d \geq r_{2} -
 r_{1}$. Assertion 1 is always true in our set-up, however due to Assertion 2,
 the correlation falls apart when the offset angle from 180 degrees is small.
-These points were removed from the data. Once all of the overlapping areas were
-calculate, we plotted and attempted to fit the data. When fit, the data didn't
-correspond to any common model well, however the general trend still shows a
-maximum at 0 degrees, and a steep decrease in area as the angle sweeps in
-either direction from this maximum (Figure \ref{figure:model2_graph}).
+These points were simply calculated at the area of the detector of smaller radius.
+Once all of the overlapping areas were calculated (Table
+\ref{table:model2_table}), we plotted and also fit the data with a Gaussian
+function. While the fit had a bad confidence interval, the correlation between
+the two models doesn't hinge on direct correlation. The fact that both sets of
+data follow the general trend of having a maximum at 0 degrees, and a steep decrease
+in area as the angle sweeps in either direction from this maximum, is enough to
+point towards a 180 degree correlation. (Figure \ref{figure:model1_graph} and
+\ref{figure:model2_graph}).
+% Conclusion
+\section{Conclusion}
+While there is no strong correlation between the two models, the fact that
+both models can even be fitted by the same function and follow the same shape,
+is good evidence that there is a 180 degree correlation between gamma rays.
+While this analysis doesn't prove without a doubt that the angular correlation
+is always 180 degrees, it does fall in line with the narrative hypothesiszed.
+Due to the conservation of momentum and the data collected, it is very likely
+the correlated angle between coincident gamma rays is 180 degrees.
+
+\newpage
+
+\section{Figures and Tables}
+%Table 1 of Coincidence Data
 \begin{table}[H]
 \centering
 \begin{tabular}{ccccc}
@@ -137,36 +156,79 @@ either direction from this maximum (Figure \ref{figure:model2_graph}).
 0 & 41.33 & 41.33 & 11.47 & 11.47\\\hline
 \bottomrule
 \end{tabular}
-\caption{Measured coincidence rate in counts per second at varied offset angles (degrees) and distances.}
-\label{table:model_1_table}
+\caption{Measured coincidence data (counts per second) at varied offset angles
+(degrees) and distances. In correspondance with model 1.}
+\label{table:model1_table}
 \end{table}
+%Table 2 of Overlapping Area Data
+\begin{table}[H]
+\centering
+\begin{tabular}{ccccc}
+\toprule
+{Angles} & \multicolumn{4}{c}{Distance}\\\cmidrule{2-5}
+& \mcc{\textbf{15 cm}}
+& \mcc{\textbf{30 cm}}\\
+\cmidrule{2-3} \cmidrule{4-5}
+& {(+)}  & {(-)} & {(+)} & {(-)} \\
+\midrule
+12 & 27.79 & 27.79 & 6.70 & 6.70\\\hline
+10 & 31.96 & 31.96 & 13.01 & 13.01\\\hline
+8 & 39.26 & 39.26 & 25.87 & 25.87\\\hline
+6 & 40.41 & 40.41 & 28.05 & 28.05\\\hline
+5 & 42.53 & 42.53 & 32.12 & 32.12\\\hline
+4 & 44.63 & 44.63 & 36.26 & 36.26\\\hline
+3 & 46.70 & 46.70 & 40.25 & 40.25\\\hline
+2 & 48.68 & 48.68 & 44.64 & 44.64\\\hline
+1 & 50.25 & 50.25 & 48.68 & 48.68\\\hline
+0 & 50.27 & 50.27 & 50.27 & 50.27\\\hline
+\bottomrule
+\end{tabular}
+\caption{Measured overlapping area ($m^{2}$) at varied offset angles
+(degrees) and distances. In correspondance with model 2.}
+\label{table:model2_table}
+\end{table}
+%Figure 1
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.45\textwidth]{Figures/gamma_coin_circuitry.png}
+    \caption{Circuitry behind the detectors used to measure gamma coincidence
+    (Inspired by \cite{Experiment_Set_Up:1}).}
+    \label{figure:circuitry}
+\end{figure}
+%Figure 2
+\begin{figure}[H]
+     \centering
+     \includegraphics[width=.45\textwidth]{Figures/detector_set_up.jpg}
+     \caption{Set up of angular variation between the two detectors and the
+     \textsuperscript{22}Na source (inspired by \cite{Experiment_Set_Up:2}).}
+     \label{figure:set_up}
+\end{figure}
+%Figure 3
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{Figures/sample_spectrum.png}
+    \caption{Spectrum produced with the detectors 15 cm and 0 degrees offset
+    from the source. Peak highlighted was integrated for count rate.}
+    \label{figure:spectrum}
+\end{figure}
+%Figure 4, 5, & 6
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.45\textwidth]{Figures/coincidence_gauss_fit.png}
-    \caption{Data from Table 1 data visualized and fitted with a Gaussian
-    function of irrelevant cofidence interval.}
+    \caption{Table \ref{table:model1_table} visualized and fitted with a Gaussian
+    function.}
     \label{figure:model1_graph}
-\end{figure}
-\begin{figure}[H]
-    \centering
     \includegraphics[width=0.45\textwidth]{Figures/overlapping_area_gauss_fit.png}
-    \caption{Tables 3 and 4 visualized. The lines simply connect each point and
-    do not reflect a line of fit.}
+    \caption{Table \ref{table:model2_table} visualized and fitted with a Gaussian
+    function.}
     \label{figure:model2_graph}
-\end{figure}
-\begin{figure}[H]
-    \centering
     \includegraphics[width=0.45\textwidth]{Figures/geometry.jpg}
     \caption{Set up of the geometry used to derive the correlation between
-    overlapping area and angular offset.}
+    overlapping area and angular offset (inspired by \cite{Geometry}).}
     \label{figure:geometry}
 \end{figure}
-% Conclusion
-\section{Conclusion}
-While there are no strong correlations between the two models, there are
-similarities in where the maximum of each data set is and the general trend to
-decrease as the angle sweeps out. Regardless of having no exact match of fit,
-the fact that the two sets of data correlate in the slightest, is enough to
-support our hypothesis. The angle between between coincident gammas is was
-supported to be 180 degrees.
+\newpage
+
+\printbibliography
+
 \end{document}

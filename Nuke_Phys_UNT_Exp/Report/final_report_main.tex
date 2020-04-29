@@ -1,0 +1,59 @@
+\documentclass[12pt, letterpaper, twocolumn]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{tabularx,siunitx}
+\usepackage[skip=0.5\baselineskip]{caption}
+\usepackage{newtxtext,newtxmath}
+\usepackage[autostyle]{csquotes}
+\usepackage[most]{tcolorbox}
+\usepackage{lipsum}
+\graphicspath{{Figures/}{../Figures/}}
+\usepackage[backend=biber,
+    bibencoding=utf8,
+    style=authoryear-icomp,
+    sortlocale=de_DE,
+    natbib=true,
+    url=false,
+    doi=true,
+    eprint=false]{biblatex}
+\usepackage[]{hyperref}
+\hypersetup{
+    colorlinks=true,
+}
+\addbibresource{references.bib}
+\usepackage{blindtext}
+\usepackage{subfiles}
+\setlength{\headheight}{14.5pt}
+%Title Set Up
+\title{Geometric Modeling of Gamma Coincidence}
+\author{Austin Smith, Jordan Sturdivant, and Rahul Mehta\\
+Department of Physics \& Astronomy, University of Central Arkansas
+}
+\date{}
+% Document Beginning
+\begin{document}
+\frenchspacing
+%Title Inserion
+\maketitle{}
+% Introduction
+\section{Introduction}
+\subfile{sections/introduction}
+%Methods
+\section{Method}
+\subfile{sections/methods}
+%Results
+\section{Results}
+\subfile{sections/results}
+% Conclusion
+\section{Conclusion}
+\subfile{sections/conclusion}
+\newpage
+\section{Figures and Tables}
+\subfile{sections/figs_and_tabs.tex}
+\newpage
+\printbibliography
+\end{document}

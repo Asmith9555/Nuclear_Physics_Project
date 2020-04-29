@@ -1,0 +1,47 @@
+\documentclass[../final_report_main.tex]{subfiles}
+\begin{document}
+Table \ref{table:model1_table} diplays the measured count rates at their
+respective offset angles from 180 degrees. The trend turned out to be similar
+for both distances from the source showing a maximum count rate somewhere
+between -1 to 1 degrees, and following a Gaussian curve as the offset angle
+increased from the 180 degree angle. (Figure \ref{figure:model1_graph}).
+For the second model, the overlapping area of the detectors as a function of
+off-set angle, the geometry in Figure \ref{figure:geometry} was used. To start
+this derivation, the the total area overlapped was set as a linear combination
+of the area of the two inner circles $A_{1}$ \& $A_{2}$ (Figure
+\ref{figure:geometry}). The areas of these pieces follow as:
+%Equation Blocks
+\begin{equation}
+  \begin{gathered}
+   A_{1} = 2\int_{d1}^{r1}\sqrt{r_{1}^{2}-x^{2}}dx \nonumber\\
+   A_{2} = 2\int_{d-r_{2}}^{d1}\sqrt{r_{2}^{2}-(x-d)^{2}}dx \nonumber
+  \end{gathered}
+\end{equation}
+After substitution and simplification we are left with:
+\begin{equation}
+  \begin{aligned}
+  A_{total}=r_{1}^{2}cos^{-1}(\frac{d_{1}}{r_{1}})−d_{1}\sqrt{r_{1}^{2}−d_{1}^
+  {2}}\\+r_{2}^{2}cos^{-1}(\frac{d_{2}}{r_{2}})−d_{2}\sqrt{r_{2}^{2}−d_{2}^{2}}
+  \nonumber
+  \end{aligned}
+\end{equation}
+where...
+\begin{equation}
+  \begin{aligned}
+  d_{1} = \frac{r_{1}^{2}-r_{2}^{2}+d^{2}}{2d} \nonumber \\ d_{2} =
+  \frac{r_{2}^{2}-r_{1}^{2}+d^{2}}{2d} \nonumber \\ d = \imath \cdot sin(\theta)
+  \end{aligned}
+\end{equation}
+This formula only holds true for when $r_{1}\geq r_{2}$ and $d \geq r_{2} -
+r_{1}$. Assertion 1 is always true in our set-up, however due to Assertion 2,
+the correlation falls apart when the offset angle from 180 degrees is small.
+These points were simply calculated at the area of the detector of smaller
+radius. Once all of the overlapping areas were calculated (Table
+\ref{table:model2_table}), we plotted and also fit the data with a Gaussian
+function. While the fit had a bad confidence interval, the correlation between
+the two models doesn't hinge on direct correlation. The fact that both sets of
+data follow the general trend of having a maximum at 0 degrees, and a steep
+decrease in area as the angle sweeps in either direction from this maximum, is
+enough to point towards a 180 degree correlation. (Figure
+\ref{figure:model1_graph} and \ref{figure:model2_graph}).
+\end{document}

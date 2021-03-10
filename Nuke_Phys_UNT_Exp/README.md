@@ -1,5 +1,5 @@
-This is the Project Folder for the Gamma-Gamma Coincidence Experiment done at
-UNT under the University of Central Arkansas. The sub-folders and their contents
+This is the Project Folder for a Gamma-Gamma Coincidence Experiment done at
+UNT under the University of Central Arkansas during 2020. The sub-folders and their contents
 are as described below:
 
 Directories:
